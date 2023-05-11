@@ -14,6 +14,8 @@ class Character_Sheet(models.Model):
     equipment = models.CharField(max_length=255)
     spells = models.CharField(max_length=255)
     backstory = models.TextField()
+    user_sub = models.CharField(max_length=50)
+
 
     def __str__(self):
         return f"{self.name} ({self.character_class}, {self.race}, level {self.level})"
