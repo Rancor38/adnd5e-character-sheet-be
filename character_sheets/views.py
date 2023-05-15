@@ -18,3 +18,10 @@ class CharacterSheetDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Character_Sheet.objects.all()
     serializer_class = CharacterSheetSerializer
     lookup_field = 'id'
+
+class CharacterSheetByUser(generics.ListAPIView):
+    serializer_class = CharacterSheetSerializer
+
+    def get_queryset(self):
+        user_sub = self.kwargs['user_sub']
+        return Character_Sheet.objects.filter(user_sub=user_sub)
